@@ -1,9 +1,10 @@
 var canViewModel = require('can-view-model');
 var camelize = require('can-util/js/string/string').camelize;
 var each = require('can-util/js/each/each');
+var importer = require('can-util/js/import/import');
+var events = require('can-event');
 
-var deferred = new can.Deferred(),
-	ignoreAttributesRegExp = /^(dataViewId|class|id|type|src)$/i;
+var ignoreAttributesRegExp = /^(dataViewId|class|id|type|src)$/i;
 
 var typeMatch = /\s*text\/(stache)\s*/;
 function isIn(element, type) {
@@ -42,62 +43,54 @@ function render(renderer, scope, el) {
 function setupScope(el) {
 	var scope = canViewModel(el);
 
-	can.each(el.attributes || [], function(attr) {
+	each(el.attributes || [], function(attr) {
 		setAttr(el, attr.name, scope);
 	});
 
-	can.bind.call(el, "attributes", function (ev) {
+	events.on.call(el, "attributes", function (ev) {
 		setAttr(el, ev.attributeName, scope);
 	});
 
 	return scope;
 }
 
-function autoload(){
-	var promises = [];
+var promise = new Promise(function(resolve, reject) {
+	function autoload(){
+		var promises = [];
 
-	each( document.querySelectorAll("[can-autorender]"), function( el, i){
-		el.style.display = "none";
+		each( document.querySelectorAll("[can-autorender]"), function( el, i){
+			el.style.display = "none";
 
-		var text = el.innerHTML || el.text,
-			typeAttr = el.getAttribute("type"),
-			typeInfo = typeAttr.match( typeMatch ),
-			type = typeInfo && typeInfo[1],
-			typeModule = "can/view/" + type;
+			var text = el.innerHTML || el.text,
+				typeAttr = el.getAttribute("type"),
+				typeInfo = typeAttr.match( typeMatch ),
+				type = typeInfo && typeInfo[1],
+				typeModule = "can-" + type;
 
-		if(window.System || !(window.define && window.define.amd)) {
-			typeModule += "/" + type;
-		}
+			console.log(typeModule);
 
-		promises.push( can["import"](typeModule).then(function(engine){
-
-			engine = can[type] || engine;
-			if(engine.async) {
-				return engine.async(text).then(function(renderer){
+			promises.push(importer(typeModule).then(function(engine){
+				if(engine.async) {
+					return engine.async(text).then(function(renderer){
+						render(renderer, setupScope(el), el);
+					});
+				} else {
+					var renderer = engine(text);
 					render(renderer, setupScope(el), el);
-				});
-			} else {
-				var renderer = engine(text);
-				render(renderer, setupScope(el), el);
-			}
+				}
+			}));
 
-		}) );
+		});
 
-	});
+		Promise.all(promises).then(resolve, reject);
+	}
 
-	can.when.apply(can, promises).then(
-		can.proxy(deferred.resolve, deferred),
-		can.proxy(deferred.reject, deferred)
-	);
-}
-
-if (document.readyState === 'complete') {
-	autoload();
-} else {
-	can.bind.call(window, 'load', autoload);
-}
-
-var promise = deferred.promise();
+	if (document.readyState === 'complete') {
+		autoload();
+	} else {
+		events.on.call(window, 'load', autoload);
+	}
+});
 
 module.exports = function autorender(success, error){
 	return promise.then(success, error);
