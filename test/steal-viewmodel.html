@@ -24,15 +24,20 @@
 	<script type='text/stache' id='basics' foo='bar' can-autorender>
 		<h1>{{message}}</h1>
 	</script>
-	<script src='../node_modules/steal/steal.js' main='@empty'>
-		var ready = require('can-view-autorender');
-		var viewModel = require('can-view-model');
-
-		ready(function() {
-			var vm = viewModel(document.getElementById('basics'));
-			vm.attr('message', "I am a leaf on the wind");
-			isReady(vm);
-		}, hasError);
+	<script src='../../../node_modules/steal/steal.js' main='@empty'></script>
+	<script src='../node_modules/steal/steal.js' main='@empty'></script>
+	<script>
+		steal.done().then(function() {
+			System.import('can-view-autorender').then(function(ready) {
+				System.import('can-view-model').then(function(viewModel) {
+					ready(function() {
+						var vm = viewModel(document.getElementById('basics'));
+						vm.attr('message', "I am a leaf on the wind");
+						isReady(vm);
+					}, hasError);
+				});
+			});
+		});
 	</script>
 </body>
 </html>

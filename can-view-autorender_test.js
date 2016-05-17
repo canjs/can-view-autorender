@@ -31,7 +31,7 @@ var makeBasicTestIframe = function(src){
 		window.removeMyself();
 	};
 	window.isReady = function(el, scope) {
-		equal(el.length, 1,"only one my-component");
+		equal(el.length, 1, "only one my-component");
 		equal(el[0].innerHTML, "Hello World","template rendered");
 		// equal(el[0].className, "inserted","template rendered");
 
@@ -45,9 +45,9 @@ var makeBasicTestIframe = function(src){
 QUnit.module("can-view-autorender");
 
 QUnit.asyncTest("the basics are able to work for steal", function(){
-	makeBasicTestIframe("basics.html?" + Math.random());
+	makeBasicTestIframe(__dirname + "/test/basics.html?" + Math.random());
 });
 
 QUnit.asyncTest("autoload loads a jquery viewmodel fn", function(){
-	makeIframe("steal-viewmodel.html?" + Math.random());
+	makeIframe(__dirname + "/test/steal-viewmodel.html?" + Math.random());
 });
