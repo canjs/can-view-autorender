@@ -3,6 +3,7 @@ var camelize = require('can-util/js/string/string').camelize;
 var each = require('can-util/js/each/each');
 var importer = require('can-util/js/import/import');
 var events = require('can-event');
+var namespace = require('can-util/namespace');
 
 var ignoreAttributesRegExp = /^(dataViewId|class|id|type|src)$/i;
 
@@ -92,6 +93,6 @@ var promise = new Promise(function(resolve, reject) {
 	}
 });
 
-module.exports = function autorender(success, error){
+module.exports = namespace.autorender = function autorender(success, error){
 	return promise.then(success, error);
 };
