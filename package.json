@@ -27,7 +27,7 @@
     "document": "documentjs",
     "develop": "done-serve --static --develop --port 8080"
   },
-  "main": "dist/cjs/can-view-autorender",
+  "main": "can-view-autorender",
   "browser": {
     "transform": [
       "cssify"
@@ -39,25 +39,19 @@
     ]
   },
   "keywords": [
-    "canjs"
+    "canjs",
+    "canjs-plugin",
+    "donejs"
   ],
   "system": {
-    "main": "can-view-autorender",
     "configDependencies": [
       "live-reload"
-    ],
-    "npmIgnore": [
-      "documentjs",
-      "testee",
-      "generator-donejs",
-      "donejs-cli",
-      "steal-tools"
     ],
     "npmAlgorithm": "flat"
   },
   "dependencies": {
     "can-event": "^3.0.0-pre.3",
-    "can-util": "^3.0.0-pre.16",
+    "can-util": "^3.0.0-pre.21",
     "can-view-model": "^3.0.0-pre.2"
   },
   "devDependencies": {
