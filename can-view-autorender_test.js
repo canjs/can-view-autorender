@@ -17,6 +17,10 @@ var makeIframe = function(src){
 	iframe.src = src;
 };
 
+var get = function(map, prop) {
+	return map.attr ? map.attr(prop) : map.get(prop);
+};
+
 var makeBasicTestIframe = function(src){
 	var iframe = document.createElement('iframe');
 	window.removeMyself = function(){
@@ -35,7 +39,7 @@ var makeBasicTestIframe = function(src){
 		equal(el[0].innerHTML, "Hello World","template rendered");
 		// equal(el[0].className, "inserted","template rendered");
 
-		equal(scope.attr("message"), "Hello World", "Scope correctly setup");
+		equal(get(scope, "message"), "Hello World", "Scope correctly setup");
 		window.removeMyself();
 	};
 	document.body.appendChild(iframe);
@@ -50,4 +54,8 @@ QUnit.asyncTest("the basics are able to work for steal", function(){
 
 QUnit.asyncTest("autoload loads a jquery viewmodel fn", function(){
 	makeIframe(__dirname + "/test/steal-viewmodel.html?" + Math.random());
+});
+
+QUnit.asyncTest("works with a can-define/map/map", function(){
+	makeBasicTestIframe(__dirname + "/test/define.html?" + Math.random());
 });

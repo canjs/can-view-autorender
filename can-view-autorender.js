@@ -19,7 +19,14 @@ function isIn(element, type) {
 function setAttr(el, attr, scope){
 	var camelized = camelize(attr);
 	if (!ignoreAttributesRegExp.test(camelized) ) {
-		scope.attr(camelized, el.getAttribute(attr));
+		var value = el.getAttribute(attr);
+		if(scope.attr) {
+			scope.attr(camelized, value);
+		} else if(scope.set) {
+			scope.set(camelized, value);
+		} else {
+			scope[camelized] = value;
+		}
 	}
 }
 function insertAfter(ref, element) {
@@ -67,8 +74,6 @@ var promise = new Promise(function(resolve, reject) {
 				typeInfo = typeAttr.match( typeMatch ),
 				type = typeInfo && typeInfo[1],
 				typeModule = "can-" + type;
-
-			console.log(typeModule);
 
 			promises.push(importer(typeModule).then(function(engine){
 				if(engine.async) {
