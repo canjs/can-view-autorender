@@ -58,7 +58,7 @@
     "can-component": "^3.0.0-pre.3",
     "can-define": "^0.7.4",
     "can-stache": "^3.0.0-pre.4",
-    "cssify": "^0.6.0",
+    "cssify": "^1.0.2",
     "documentjs": "^0.4.2",
     "done-serve": "^0.2.0",
     "donejs-cli": "^0.9.4",
