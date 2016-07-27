@@ -64,7 +64,7 @@
     "donejs-cli": "^0.9.4",
     "generator-donejs": "^0.9.0",
     "jshint": "^2.9.1",
-    "steal": "^0.16.0",
+    "steal": "^0.16.33",
     "steal-qunit": "^0.1.1",
     "steal-tools": "^0.16.0",
     "testee": "^0.2.4"
@@ -77,12 +77,14 @@
       "bit-docs-generate-readme": "^0.0.8"
     },
     "glob": {
-      "pattern": "**\/*.{js,md}",
-      "ignore": "node_modules\/**\/*"
+      "pattern": "**/*.{js,md}",
+      "ignore": "node_modules/**/*"
     },
-		"readme": {
-			"apis": ["can-view-autorender"]
-		},
+    "readme": {
+      "apis": [
+        "can-view-autorender"
+      ]
+    },
     "parent": "can-view-autorender"
   }
 }
