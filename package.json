@@ -56,7 +56,7 @@
   },
   "devDependencies": {
     "can-component": "^3.0.0-pre.3",
-    "can-define": "^0.7.4",
+    "can-define": "^0.7.27",
     "can-stache": "^3.0.0-pre.4",
     "cssify": "^1.0.2",
     "bit-docs": "0.0.6",
@@ -77,12 +77,14 @@
       "bit-docs-generate-readme": "^0.0.8"
     },
     "glob": {
-      "pattern": "**\/*.{js,md}",
-      "ignore": "node_modules\/**\/*"
+      "pattern": "**/*.{js,md}",
+      "ignore": "node_modules/**/*"
     },
-		"readme": {
-			"apis": ["can-view-autorender"]
-		},
+    "readme": {
+      "apis": [
+        "can-view-autorender"
+      ]
+    },
     "parent": "can-view-autorender"
   }
 }
