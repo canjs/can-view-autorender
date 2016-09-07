@@ -35,6 +35,7 @@ var makeBasicTestIframe = function(src){
 		window.removeMyself();
 	};
 	window.isReady = function(el, scope) {
+		
 		equal(el.length, 1, "only one my-component");
 		equal(el[0].innerHTML, "Hello World","template rendered");
 		// equal(el[0].className, "inserted","template rendered");
