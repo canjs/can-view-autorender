@@ -11,6 +11,6 @@ var MyMap = DefineMap.extend({
 module.exports = Component.extend({
 	tag: "my-component",
 	// call can.stache b/c it should be imported auto-magically
-	template: stache("{{message}}"),
+	view: stache("{{message}}"),
 	ViewModel: MyMap
 });
