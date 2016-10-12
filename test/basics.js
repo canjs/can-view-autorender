@@ -6,9 +6,7 @@ module.exports = Component.extend({
 	tag: "my-component",
 	// call can.stache b/c it should be imported auto-magically
 	view: stache("{{message}}"),
-	scope: function(){
-		return new SimpleMap({
-			message: "Hello World"
-		});
-	}
+	viewModel: new SimpleMap({
+		message: "Hello World"
+	})
 });
