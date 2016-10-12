@@ -1,6 +1,6 @@
 {
   "name": "can-view-autorender",
-  "version": "3.0.0-pre.4",
+  "version": "3.0.0-pre.5",
   "description": "Automatically render templates found in the document",
   "homepage": "https://canjs.com",
   "repository": {
@@ -77,12 +77,14 @@
       "bit-docs-generate-readme": "^0.0.8"
     },
     "glob": {
-      "pattern": "**\/*.{js,md}",
-      "ignore": "node_modules\/**\/*"
+      "pattern": "**/*.{js,md}",
+      "ignore": "node_modules/**/*"
     },
-		"readme": {
-			"apis": ["can-view-autorender"]
-		},
+    "readme": {
+      "apis": [
+        "can-view-autorender"
+      ]
+    },
     "parent": "can-view-autorender"
   }
 }
