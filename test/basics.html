@@ -30,8 +30,8 @@
 					var myComponents = document.body.querySelectorAll("my-component");
 					isReady(myComponents, viewModel(myComponents[0]));
 				}, hasError);
-			});
-		});
+			}).catch(hasError);
+		}).catch(hasError);
 	}).catch(hasError);
 </script>
 
