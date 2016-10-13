@@ -10,7 +10,7 @@ var makeIframe = function(src){
 		start();
 	};
 	window.hasError = function(error) {
-		ok(false, error.message);
+		ok(false, error.message || error);
 		window.removeMyself();
 	};
 	document.body.appendChild(iframe);
@@ -31,14 +31,12 @@ var makeBasicTestIframe = function(src){
 		start();
 	};
 	window.hasError = function(error) {
-		ok(false, error.message);
+		ok(false, error.message || error);
 		window.removeMyself();
 	};
 	window.isReady = function(el, scope) {
-		
 		equal(el.length, 1, "only one my-component");
 		equal(el[0].innerHTML, "Hello World","template rendered");
-		// equal(el[0].className, "inserted","template rendered");
 
 		equal(get(scope, "message"), "Hello World", "Scope correctly setup");
 		window.removeMyself();
