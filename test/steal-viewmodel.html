@@ -35,8 +35,8 @@
 						vm.attr('message', "I am a leaf on the wind");
 						isReady(vm);
 					}, hasError);
-				});
-			});
+				}).catch(hasError);
+			}).catch(hasError);
 		}).catch(hasError);
 	</script>
 </body>
