@@ -47,14 +47,16 @@ var makeBasicTestIframe = function(src){
 
 QUnit.module("can-view-autorender");
 
-QUnit.asyncTest("the basics are able to work for steal", function(){
-	makeBasicTestIframe(__dirname + "/test/basics.html?" + Math.random());
-});
+if (__dirname !== '/') {
+	QUnit.asyncTest("the basics are able to work for steal", function(){
+		makeBasicTestIframe(__dirname + "/test/basics.html?" + Math.random());
+	});
 
-QUnit.asyncTest("autoload loads a jquery viewmodel fn", function(){
-	makeIframe(__dirname + "/test/steal-viewmodel.html?" + Math.random());
-});
+	QUnit.asyncTest("autoload loads a jquery viewmodel fn", function(){
+		makeIframe(__dirname + "/test/steal-viewmodel.html?" + Math.random());
+	});
 
-QUnit.asyncTest("works with a can-define/map/map", function(){
-	makeBasicTestIframe(__dirname + "/test/define.html?" + Math.random());
-});
+	QUnit.asyncTest("works with a can-define/map/map", function(){
+		makeBasicTestIframe(__dirname + "/test/define.html?" + Math.random());
+	});
+}
