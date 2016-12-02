@@ -1,5 +1,3 @@
-# can-view-autorender
-
 [![Build Status](https://travis-ci.org/canjs/can-view-autorender.png?branch=master)](https://travis-ci.org/canjs/can-view-autorender)
 
 Automatically render templates found in the document.
@@ -19,7 +17,7 @@ Automatically render templates found in the document.
 
 ## <code>__can-view-autorender__ function</code>
 
-A module that automatically renders script and other elements with 
+A module that automatically renders script and other elements with
 the [can/view/autorender.can-autorender] attribute. This function is useful to know when the templates have finished rendering.
 
 
@@ -32,10 +30,10 @@ the [can/view/autorender.can-autorender] attribute. This function is useful to k
 1. __success__ <code>{function}</code>:
   A function to callback when all autorendered templates have been rendered
   successfully.
-  
+
 1. __error__ <code>{function}</code>:
   A function to callback if a template was not rendered successfully.
-  
+
 ## Contributing
 
 ### Making a Build
