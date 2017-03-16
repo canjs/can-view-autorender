@@ -4,15 +4,25 @@
   <meta http-equiv="x-ua-compatible" content="IE=Edge"/>
 </head>
 <body>
-
+  <script>
+  	if(!(window.console && console.log)) {
+  	  console = {
+  	    log: function(){},
+  	    debug: function(){},
+  	    info: function(){},
+  	    warn: function(){},
+  	    error: function(){}
+  	  };
+  	}
+  </script>
 <script>
   window.isReady = window.parent.isReady || function(el) {
-    console.log(el.length);
-    console.log(el.innerHTML);
+    //console.log(el.length);
+    //console.log(el.innerHTML);
   };
   window.hasError = window.parent.hasError || function(error) {
-    console.log(error.stack);
-    console.log("error in autoload", error)
+    //console.log(error.stack);
+    //console.log("error in autoload", error)
   };
   window.removeMyself = window.parent.removeMyself;
 </script>
