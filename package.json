@@ -1,6 +1,6 @@
 {
   "name": "can-view-autorender",
-  "version": "3.0.4",
+  "version": "3.1.0-pre.1",
   "description": "Automatically render templates found in the document",
   "homepage": "https://canjs.com",
   "repository": {
@@ -15,11 +15,11 @@
   "scripts": {
     "preversion": "npm test && npm run build",
     "version": "git commit -am \"Update dist for release\" && git checkout -b release && git add -f dist/",
-    "postversion": "git push --tags && git checkout master && git branch -D release && git push",
+    "postversion": "git push --tags && git checkout can-reflect && git branch -D release && git push",
     "testee": "testee test/test.html --browsers firefox",
     "test": "npm run jshint && npm run testee",
     "jshint": "jshint ./*.js --config",
-    "release:pre": "npm version prerelease && npm publish",
+    "release:pre": "npm version prerelease && npm publish --tags=pre",
     "release:patch": "npm version patch && npm publish",
     "release:minor": "npm version minor && npm publish",
     "release:major": "npm version major && npm publish",
@@ -39,15 +39,15 @@
     ]
   },
   "dependencies": {
-    "can-event": "^3.0.1",
-    "can-util": "^3.2.2",
-    "can-view-model": "^3.0.0"
+    "can-event": "^3.5.0-pre.2",
+    "can-util": "^3.9.0-pre.4",
+    "can-view-model": "^3.3.0-pre.1"
   },
   "devDependencies": {
     "bit-docs": "0.0.7",
-    "can-component": "^3.0.0-pre.3",
-    "can-define": "^1.0.1",
-    "can-stache": "^3.0.0-pre.19",
+    "can-component": "^3.1.0-pre.0",
+    "can-define": "^1.2.0-pre.4",
+    "can-stache": "^3.1.0-pre.3",
     "done-serve": "^0.2.0",
     "donejs-cli": "^0.9.4",
     "generator-donejs": "^0.9.0",
