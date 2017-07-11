@@ -14,6 +14,8 @@ Automatically render templates found in the document.
 
 ## API
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/canjs/can-view-autorender.svg)](https://greenkeeper.io/)
+
 
 ## <code>__can-view-autorender__ function</code>
 
