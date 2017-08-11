@@ -1,57 +1,28 @@
-[![Build Status](https://travis-ci.org/canjs/can-view-autorender.png?branch=master)](https://travis-ci.org/canjs/can-view-autorender)
+# can-view-autorender
 
-Automatically render templates found in the document.
-
-```
-<script type="text/stache" can-autorender>
-	<div>Hello world!</div>
-</script>
-<script src="./node_modules/steal/steal.js" main="can-view-autorender"></script>
-```
-
-- <code>[__can-view-autorender__ function](#can-view-autorender-function)</code>
-  - <code>[autorender(success, error)](#autorendersuccess-error)</code>
-
-## API
-
+[![Join the chat at https://gitter.im/canjs/canjs](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/canjs/canjs?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/canjs/can-view-autorender/blob/master/LICENSE.md)
+[![npm version](https://badge.fury.io/js/can-view-autorender.svg)](https://www.npmjs.com/package/can-view-autorender)
+[![Travis build status](https://travis-ci.org/canjs/can-view-autorender.svg?branch=master)](https://travis-ci.org/canjs/can-view-autorender)
+[![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/canjs/can-view-autorender?branch=master&svg=true)](https://ci.appveyor.com/project/matthewp/can-view-autorender)
+[![Coverage status](https://coveralls.io/repos/github/canjs/can-view-autorender/badge.svg?branch=master)](https://coveralls.io/github/canjs/can-view-autorender?branch=master)
 [![Greenkeeper badge](https://badges.greenkeeper.io/canjs/can-view-autorender.svg)](https://greenkeeper.io/)
 
+FAILED TO GET DESCRIPTION
 
-## <code>__can-view-autorender__ function</code>
+## Documentation
 
-A module that automatically renders script and other elements with
-the [can/view/autorender.can-autorender] attribute. This function is useful to know when the templates have finished rendering.
+Read the [API docs on CanJS.com](https://canjs.com/doc/can-view-autorender.html).
 
+## Changelog
 
-### <code>autorender(success, error)</code>
-
-
-  Registers functions to callback when all templates successfully render or an error in rendering happens.
-
-
-1. __success__ <code>{function}</code>:
-  A function to callback when all autorendered templates have been rendered
-  successfully.
-
-1. __error__ <code>{function}</code>:
-  A function to callback if a template was not rendered successfully.
+See the [latest releases on GitHub](https://github.com/canjs/can-view-autorender/releases).
 
 ## Contributing
 
-### Making a Build
+The [contribution guide](https://github.com/canjs/can-view-autorender/blob/master/CONTRIBUTING.md) has information on getting help, reporting bugs, developing locally, and more.
 
-To make a build of the distributables into `dist/` in the cloned repository run
+## License
 
-```
-npm install
-node build
-```
+[MIT](https://github.com/canjs/can-view-autorender/blob/master/LICENSE.md)
 
-### Running the tests
-
-Tests can run in the browser by opening a webserver and visiting the `test.html` page.
-Automated tests that run the tests from the command line in Firefox can be run with
-
-```
-npm test
-```
