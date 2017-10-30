@@ -1,6 +1,7 @@
 @module {function()} can-view-autorender can-view-autorender
 @package ./package.json
-@parent can-ecosystem
+@parent can-views
+@collection can-ecosystem
 
 A module that automatically renders script and other elements with
 the `can-autorender` attribute. This function is useful to know when the templates have finished rendering.
