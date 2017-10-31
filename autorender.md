@@ -1,5 +1,6 @@
 @module {function()} can/view/autorender can.autorender
 @parent can.view.plugins
+@hide
 
 A module that automatically renders script and other elements with
 the [can/view/autorender.can-autorender] attribute. This function is useful to know when
