@@ -23,6 +23,7 @@ As long is this module is part of your CanJS build or imported with RequireJS, S
 [can/view/autorender.can-autorender] will automatically look for `can-autorender` tags and render them.  Once
 all templates have finished rendering, it will call any callbacks passed to `can.autorender()`.
 
+Note: Although `auto-render` works on all HTML elements, using elements other than `script` tags will result in all attribute names being lowercased by the browser. This can cause `can-stache-bindings` to not work properly, so you should use `<script>` tags if your autorender content contains bindings.
 
 For example, you might have a page like:
 
