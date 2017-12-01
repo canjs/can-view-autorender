@@ -39,7 +39,7 @@
   },
   "dependencies": {
     "can-event": "^3.6.0",
-    "can-util": "^3.9.5",
+    "can-util": "3.10.17",
     "can-view-model": "^3.3.0"
   },
   "devDependencies": {
