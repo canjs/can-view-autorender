@@ -4,7 +4,17 @@
 	<meta http-equiv="x-ua-compatible" content="IE=Edge"/>
 </head>
 <body>
-
+	<script>
+		if(!(window.console && console.log)) {
+		  console = {
+		    log: function(){},
+		    debug: function(){},
+		    info: function(){},
+		    warn: function(){},
+		    error: function(){}
+		  };
+		}
+	</script>
 	<script>
 		if( window.parent.QUnit ) {
 			window.isReady = function(vm) {
@@ -13,11 +23,11 @@
 			};
 		} else {
 			window.isReady = function(vm) {
-				console.log("isReady", vm.attr());
+				//console.log("isReady", vm.attr());
 			};
 		}
 		window.hasError = window.parent.hasError || function(error) {
-			console.log("error in autoload", error)
+			//console.log("error in autoload", error)
 		};
 		window.removeMyself = window.parent.removeMyself;
 	</script>
