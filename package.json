@@ -33,15 +33,15 @@
     "donejs"
   ],
   "dependencies": {
-    "can-namespace": "^1.0.0",
+    "can-namespace": "1.0.0",
     "can-util": "^3.9.5",
-    "can-view-model": "^4.0.0-pre.0"
+    "can-view-model": "^4.0.0"
   },
   "devDependencies": {
     "bit-docs": "0.0.8-0",
-    "can-component": "^4.0.0-pre.0",
-    "can-define": "^2.0.0-pre.0",
-    "can-stache": "^4.0.0-pre.0",
+    "can-component": "^4.0.0",
+    "can-define": "^2.0.0",
+    "can-stache": "^4.0.0",
     "detect-cyclic-packages": "^1.1.0",
     "jshint": "^2.9.1",
     "steal": "^1.2.10",
