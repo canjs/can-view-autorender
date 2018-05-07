@@ -1,9 +1,9 @@
-var canViewModel = require("can-view-model");
-var camelize = require("can-util/js/string/string").camelize;
-var each = require("can-util/js/each/each");
-var importer = require("can-util/js/import/import");
 var namespace = require("can-namespace");
-var domEvents = require("can-util/dom/events/events");
+var canViewModel = require("can-view-model");
+var canReflect = require("can-reflect");
+var camelize = require("can-string").camelize;
+var importer = require("can-importer");
+var domEvents = require("can-dom-events");
 
 var ignoreAttributesRegExp = /^(dataViewId|class|id|type|src)$/i;
 
@@ -51,11 +51,11 @@ function render(renderer, scope, el) {
 function setupScope(el) {
 	var scope = canViewModel(el);
 
-	each(el.attributes || [], function(attr) {
+	canReflect.each(el.attributes || [], function(attr) {
 		setAttr(el, attr.name, scope);
 	});
 
-	domEvents.addEventListener.call(el, "attributes", function(ev) {
+	domEvents.addEventListener(el, "attributes", function(ev) {
 		setAttr(el, ev.attributeName, scope);
 	});
 
@@ -66,7 +66,7 @@ var promise = new Promise(function(resolve, reject) {
 	function autoload(){
 		var promises = [];
 
-		each( document.querySelectorAll("[can-autorender]"), function( el, i){
+		canReflect.each(document.querySelectorAll("[can-autorender]"), function( el, i){
 			el.style.display = "none";
 
 			var text = el.innerHTML || el.text,
@@ -94,7 +94,7 @@ var promise = new Promise(function(resolve, reject) {
 	if (document.readyState === "complete") {
 		autoload();
 	} else {
-		domEvents.addEventListener.call(window, "load", autoload);
+		domEvents.addEventListener(window, "load", autoload);
 	}
 });
 
