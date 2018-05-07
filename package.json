@@ -33,8 +33,11 @@
     "donejs"
   ],
   "dependencies": {
+    "can-dom-events": "^1.2.0",
+    "can-import-module": "^1.0.0",
     "can-namespace": "1.0.0",
-    "can-util": "^3.9.5",
+    "can-reflect": "^1.15.2",
+    "can-string": "<2.0.0",
     "can-view-model": "^4.0.0"
   },
   "devDependencies": {
