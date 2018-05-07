@@ -34,7 +34,7 @@
   ],
   "dependencies": {
     "can-dom-events": "^1.2.0",
-    "can-importer": "^1.0.0",
+    "can-import-module": "^1.0.0",
     "can-namespace": "1.0.0",
     "can-reflect": "^1.15.2",
     "can-string": "<2.0.0",

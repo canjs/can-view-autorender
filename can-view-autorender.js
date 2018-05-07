@@ -2,7 +2,7 @@ var namespace = require("can-namespace");
 var canViewModel = require("can-view-model");
 var canReflect = require("can-reflect");
 var camelize = require("can-string").camelize;
-var importer = require("can-importer");
+var load = require("can-import-module");
 var domEvents = require("can-dom-events");
 
 var ignoreAttributesRegExp = /^(dataViewId|class|id|type|src)$/i;
@@ -75,7 +75,7 @@ var promise = new Promise(function(resolve, reject) {
 				type = typeInfo && typeInfo[1],
 				typeModule = "can-" + type;
 
-			promises.push(importer(typeModule).then(function(engine){
+			promises.push(load(typeModule).then(function(engine){
 				if(engine.async) {
 					return engine.async(text).then(function(renderer){
 						render(renderer, setupScope(el), el);
