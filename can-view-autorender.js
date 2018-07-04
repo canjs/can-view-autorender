@@ -1,3 +1,4 @@
+"use strict";
 var canViewModel = require("can-view-model");
 var camelize = require("can-util/js/string/string").camelize;
 var each = require("can-util/js/each/each");
