@@ -5,7 +5,7 @@ var camelize = require("can-string").camelize;
 var load = require("can-import-module");
 var domEvents = require("can-dom-events");
 
-var ignoreAttributesRegExp = /^(dataViewId|class|id|type|src)$/i;
+var ignoreAttributesRegExp = /^(dataViewId|class|id|type|src|style)$/i;
 
 var typeMatch = /\s*text\/(stache)\s*/;
 function isIn(element, type) {
@@ -16,17 +16,15 @@ function isIn(element, type) {
 		}
 	}
 }
-function setAttr(el, attr, scope){
+function setAttr(el, attr, viewModel){
 	var camelized = camelize(attr);
 	if (!ignoreAttributesRegExp.test(camelized) ) {
 		var value = el.getAttribute(attr);
-		if(scope.attr) {
-			scope.attr(camelized, value);
-		} else if(scope.set) {
-			scope.set(camelized, value);
-		} else {
-			scope[camelized] = value;
+
+		if(!canReflect.hasKey(viewModel, camelized)) {
+			canReflect.defineInstanceKey(viewModel.constructor, camelized, typeof value);
 		}
+		canReflect.setKeyValue(viewModel, camelized, value);
 	}
 }
 function insertAfter(ref, element) {
