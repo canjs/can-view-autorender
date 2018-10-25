@@ -30,6 +30,9 @@ var makeBasicTestIframe = function(src){
 		document.body.removeChild(iframe);
 		start();
 	};
+	window.assertOk = function() {
+		ok.apply(null, arguments);
+	};
 	window.hasError = function(error) {
 		ok(false, error.message || error);
 		window.removeMyself();
@@ -58,5 +61,9 @@ if (__dirname !== '/') {
 
 	QUnit.asyncTest("works with a can-define/map/map", function(){
 		makeBasicTestIframe(__dirname + "/test/define.html?" + Math.random());
+	});
+
+	QUnit.asyncTest("does not set can-autorender property on sealed ViewModels", function(){
+		makeBasicTestIframe(__dirname + "/test/define2.html?" + Math.random());
 	});
 }
