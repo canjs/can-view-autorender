@@ -5,8 +5,6 @@
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/canjs/can-view-autorender/blob/master/LICENSE.md)
 [![npm version](https://badge.fury.io/js/can-view-autorender.svg)](https://www.npmjs.com/package/can-view-autorender)
 [![Travis build status](https://travis-ci.org/canjs/can-view-autorender.svg?branch=master)](https://travis-ci.org/canjs/can-view-autorender)
-[![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/canjs/can-view-autorender?branch=master&svg=true)](https://ci.appveyor.com/project/matthewp/can-view-autorender)
-[![Coverage status](https://coveralls.io/repos/github/canjs/can-view-autorender/badge.svg?branch=master)](https://coveralls.io/github/canjs/can-view-autorender?branch=master)
 [![Greenkeeper badge](https://badges.greenkeeper.io/canjs/can-view-autorender.svg)](https://greenkeeper.io/)
 
 Automatically render templates found in the document.
