@@ -1,6 +1,7 @@
 var QUnit = require('steal-qunit');
 
-var makeIframe = function(src){
+var makeIframe = function(assert, src){
+	var done = assert.async();
 	var iframe = document.createElement('iframe');
 	window.removeMyself = function(){
 		delete window.removeMyself;
@@ -21,7 +22,8 @@ var get = function(map, prop) {
 	return map.attr ? map.attr(prop) : map.get(prop);
 };
 
-var makeBasicTestIframe = function(src){
+var makeBasicTestIframe = function(assert, src){
+	var done = assert.async();
 	var iframe = document.createElement('iframe');
 	window.removeMyself = function(){
 		delete window.removeMyself;
@@ -31,7 +33,7 @@ var makeBasicTestIframe = function(src){
 		done();
 	};
 	window.assertOk = function() {
-		ok.apply(null, arguments);
+		assert.ok.apply(assert, arguments);
 	};
 	window.hasError = function(error) {
 		assert.ok(false, error.message || error);
@@ -52,18 +54,18 @@ QUnit.module("can-view-autorender");
 
 if (__dirname !== '/') {
 	QUnit.test("the basics are able to work for steal", function(assert) {
-		makeBasicTestIframe(__dirname + "/test/basics.html?" + Math.random());
+		makeBasicTestIframe(assert, __dirname + "/test/basics.html?" + Math.random());
 	});
 
 	QUnit.test("autoload loads a jquery viewmodel fn", function(assert) {
-		makeIframe(__dirname + "/test/steal-viewmodel.html?" + Math.random());
+		makeIframe(assert, __dirname + "/test/steal-viewmodel.html?" + Math.random());
 	});
 
 	QUnit.test("works with a can-define/map/map", function(assert) {
-		makeBasicTestIframe(__dirname + "/test/define.html?" + Math.random());
+		makeBasicTestIframe(assert, __dirname + "/test/define.html?" + Math.random());
 	});
 
 	QUnit.test("does not set can-autorender property on sealed ViewModels", function(assert) {
-		makeBasicTestIframe(__dirname + "/test/define2.html?" + Math.random());
+		makeBasicTestIframe(assert, __dirname + "/test/define2.html?" + Math.random());
 	});
 }

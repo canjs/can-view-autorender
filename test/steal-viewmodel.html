@@ -8,7 +8,7 @@
 	<script>
 		if( window.parent.QUnit ) {
 			window.isReady = function(vm) {
-				window.parent.QUnit.ok( vm, "we got a vm!" );
+				window.parent.QUnit.assert.ok( vm, "we got a vm!" );
 				removeMyself();
 			};
 		} else {
