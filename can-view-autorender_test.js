@@ -1,16 +1,17 @@
 var QUnit = require('steal-qunit');
 
-var makeIframe = function(src){
+var makeIframe = function(assert, src){
+	var done = assert.async();
 	var iframe = document.createElement('iframe');
 	window.removeMyself = function(){
 		delete window.removeMyself;
 		delete window.isReady;
 		delete window.hasError;
 		document.body.removeChild(iframe);
-		start();
+		done();
 	};
 	window.hasError = function(error) {
-		ok(false, error.message || error);
+		assert.ok(false, error.message || error);
 		window.removeMyself();
 	};
 	document.body.appendChild(iframe);
@@ -21,27 +22,28 @@ var get = function(map, prop) {
 	return map.attr ? map.attr(prop) : map.get(prop);
 };
 
-var makeBasicTestIframe = function(src){
+var makeBasicTestIframe = function(assert, src){
+	var done = assert.async();
 	var iframe = document.createElement('iframe');
 	window.removeMyself = function(){
 		delete window.removeMyself;
 		delete window.isReady;
 		delete window.hasError;
 		document.body.removeChild(iframe);
-		start();
+		done();
 	};
 	window.assertOk = function() {
-		ok.apply(null, arguments);
+		assert.ok.apply(assert, arguments);
 	};
 	window.hasError = function(error) {
-		ok(false, error.message || error);
+		assert.ok(false, error.message || error);
 		window.removeMyself();
 	};
 	window.isReady = function(el, scope) {
-		equal(el.length, 1, "only one my-component");
-		equal(el[0].innerHTML, "Hello World","template rendered");
+		assert.equal(el.length, 1, "only one my-component");
+		assert.equal(el[0].innerHTML, "Hello World","template rendered");
 
-		equal(get(scope, "message"), "Hello World", "Scope correctly setup");
+		assert.equal(get(scope, "message"), "Hello World", "Scope correctly setup");
 		window.removeMyself();
 	};
 	document.body.appendChild(iframe);
@@ -51,19 +53,19 @@ var makeBasicTestIframe = function(src){
 QUnit.module("can-view-autorender");
 
 if (__dirname !== '/') {
-	QUnit.asyncTest("the basics are able to work for steal", function(){
-		makeBasicTestIframe(__dirname + "/test/basics.html?" + Math.random());
+	QUnit.test("the basics are able to work for steal", function(assert) {
+		makeBasicTestIframe(assert, __dirname + "/test/basics.html?" + Math.random());
 	});
 
-	QUnit.asyncTest("autoload loads a jquery viewmodel fn", function(){
-		makeIframe(__dirname + "/test/steal-viewmodel.html?" + Math.random());
+	QUnit.test("autoload loads a jquery viewmodel fn", function(assert) {
+		makeIframe(assert, __dirname + "/test/steal-viewmodel.html?" + Math.random());
 	});
 
-	QUnit.asyncTest("works with a can-define/map/map", function(){
-		makeBasicTestIframe(__dirname + "/test/define.html?" + Math.random());
+	QUnit.test("works with a can-define/map/map", function(assert) {
+		makeBasicTestIframe(assert, __dirname + "/test/define.html?" + Math.random());
 	});
 
-	QUnit.asyncTest("does not set can-autorender property on sealed ViewModels", function(){
-		makeBasicTestIframe(__dirname + "/test/define2.html?" + Math.random());
+	QUnit.test("does not set can-autorender property on sealed ViewModels", function(assert) {
+		makeBasicTestIframe(assert, __dirname + "/test/define2.html?" + Math.random());
 	});
 }
