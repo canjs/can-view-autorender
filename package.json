@@ -1,6 +1,6 @@
 {
   "name": "can-view-autorender",
-  "version": "5.0.3",
+  "version": "5.0.4",
   "description": "Automatically render templates found in the document",
   "homepage": "https://canjs.com",
   "repository": {
