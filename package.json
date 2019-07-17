@@ -42,9 +42,9 @@
   },
   "devDependencies": {
     "bit-docs": "0.0.8-0",
-    "can-component": "^4.0.0",
+    "can-component": "canjs/can-component#major",
     "can-define": "^2.0.0",
-    "can-stache": "^4.0.0",
+    "can-stache": "canjs/can-stache#major",
     "detect-cyclic-packages": "^1.1.0",
     "jshint": "^2.9.1",
     "steal": "^1.2.10",
