@@ -1,7 +1,5 @@
 language: node_js
 node_js: 10.14.2
-addons:
-  firefox: '69.0'
 dist: xenial
 services:
   - xvfb
